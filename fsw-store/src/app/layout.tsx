@@ -28,4 +28,6 @@ export default function RootLayout({
   );
 }
 
-//// https://github.com/felipemotarocha/fullstackweek-store
+// https://github.com/felipemotarocha/fullstackweek-store
+
+// https://www.figma.com/file/Y8jmabSZXxAobeUJQdI4bm/FSW-Store-%5BLive%5D?type=design&node-id=89-280&mode=design
