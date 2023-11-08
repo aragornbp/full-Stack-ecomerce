@@ -29,7 +29,7 @@ export default async function Home() {
   });
 
   return (
-    <div>
+    <div className="flex flex-col py-8">
       <Banner src="/banner-home-1.png" alt="Até 55% de desconto" />
 
       <div className="mt-8">

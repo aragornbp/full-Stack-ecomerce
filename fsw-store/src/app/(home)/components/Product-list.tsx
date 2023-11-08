@@ -11,10 +11,9 @@ const ProductList = ({ products }: iProductListProps) => {
   return (
     <div className="& [&::] [&::-webkit flex w-full gap-4 overflow-x-auto p-5 [&::-webkit-scrollbar]:hidden">
       {products.map((product) => (
-        <ProductItem
-          key={product.id}
-          product={computeProductTotalPrice(product)}
-        />
+        <div key={product.id} className="w-[170px] max-w-[170px]">
+          <ProductItem product={computeProductTotalPrice(product)} />
+        </div>
       ))}
     </div>
   );
