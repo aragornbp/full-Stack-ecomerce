@@ -6,14 +6,16 @@ import { ShapesIcon } from "lucide-react";
 import React from "react";
 
 const CategoryProducts = async ({ params }: any) => {
-  const products = await prismaClient.product.findMany({
+  const category = await prismaClient.category.findFirst({
     where: {
-      Category: {
-        slug: params.slug,
-      },
+      slug: params.slug,
     },
+    include: { products: true },
   });
 
+  if (!category) {
+    return null;
+  }
   return (
     <div className="flex flex-col gap-8 p-5">
       <Badge
@@ -25,7 +27,7 @@ const CategoryProducts = async ({ params }: any) => {
       </Badge>
 
       <div className="grid grid-cols-2 gap-6">
-        {products.map((product) => (
+        {category.products.map((product) => (
           <ProductItem
             key={product.id}
             product={computeProductTotalPrice(product)}
@@ -35,5 +37,4 @@ const CategoryProducts = async ({ params }: any) => {
     </div>
   );
 };
-
 export default CategoryProducts;

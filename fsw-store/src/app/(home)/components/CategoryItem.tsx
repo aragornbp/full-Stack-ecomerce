@@ -8,6 +8,7 @@ import {
   SpeakerIcon,
   SquareIcon,
 } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 interface iCategoryProps {
@@ -25,13 +26,15 @@ const CategoryItem = ({ category }: iCategoryProps) => {
   };
 
   return (
-    <Badge
-      variant="outline"
-      className="flex items-center justify-center gap-2 rounded-lg py-3"
-    >
-      {categoryIcon[category.slug as keyof typeof categoryIcon]}
-      <span className="text-xs font-bold">{category.name}</span>
-    </Badge>
+    <Link href={`/category/${category.slug}`}>
+      <Badge
+        variant="outline"
+        className="flex items-center justify-center gap-2 rounded-lg py-3"
+      >
+        {categoryIcon[category.slug as keyof typeof categoryIcon]}
+        <span className="text-xs font-bold">{category.name}</span>
+      </Badge>
+    </Link>
   );
 };
 
