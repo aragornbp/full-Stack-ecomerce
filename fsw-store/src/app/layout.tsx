@@ -36,4 +36,4 @@ export default function RootLayout({
 
 // https://www.figma.com/file/Y8jmabSZXxAobeUJQdI4bm/FSW-Store-%5BLive%5D?type=design&node-id=89-280&mode=design
 
-// parei em 2:20
+// parei em parte 3 - 1:00:00 h

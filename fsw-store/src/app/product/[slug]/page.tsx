@@ -1,6 +1,9 @@
 import { prismaClient } from "@/lib/prisma";
 import React from "react";
 import ProductImages from "./components/ProductImages";
+import ProductInfo from "./components/ProductInfo";
+import { computeProductTotalPrice } from "@/helpers/products";
+import ProductList from "@/components/Product-list";
 
 interface iProductDetailsPageProps {
   params: {
@@ -15,17 +18,32 @@ const ProductDetailsPage = async ({
     where: {
       slug: slug,
     },
+    include: {
+      Category: {
+        include: {
+          products: {
+            where: {
+              slug: {
+                not: slug,
+              },
+            },
+          },
+        },
+      },
+    },
   });
 
   if (!product) return null;
 
   return (
-    <div>
+    <div className="flex flex-col gap-8 pb-8">
       <ProductImages
         key={product.id}
         imageUrls={product.imageUrls}
         name={product.name}
-      ></ProductImages>
+      />
+      <ProductInfo product={computeProductTotalPrice(product)} />
+      <ProductList products={product.Category!.products} />
     </div>
   );
 };
