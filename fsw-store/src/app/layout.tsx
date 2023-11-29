@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { AuthProvider } from "@/providers/auth";
 import Footer from "@/components/Footer";
+import CartProvider from "@/providers/Cart";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +23,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex h-full flex-col">
           <AuthProvider>
-            <Header />
-            <div className="flex-1">{children}</div>
-            <Footer />
+            <CartProvider>
+              <Header />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </CartProvider>
           </AuthProvider>
         </div>
       </body>
@@ -36,4 +39,4 @@ export default function RootLayout({
 
 // https://www.figma.com/file/Y8jmabSZXxAobeUJQdI4bm/FSW-Store-%5BLive%5D?type=design&node-id=89-280&mode=design
 
-// parei em parte 3 - 1:00:00 h
+// parei em parte 3 - 2:00:00 h

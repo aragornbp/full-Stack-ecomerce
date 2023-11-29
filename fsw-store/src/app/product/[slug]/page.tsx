@@ -4,6 +4,7 @@ import ProductImages from "./components/ProductImages";
 import ProductInfo from "./components/ProductInfo";
 import { computeProductTotalPrice } from "@/helpers/products";
 import ProductList from "@/components/Product-list";
+import SectionTitle from "@/components/Section-title";
 
 interface iProductDetailsPageProps {
   params: {
@@ -43,7 +44,11 @@ const ProductDetailsPage = async ({
         name={product.name}
       />
       <ProductInfo product={computeProductTotalPrice(product)} />
-      <ProductList products={product.Category!.products} />
+
+      <div>
+        <SectionTitle>Produtos Recomendados</SectionTitle>
+        <ProductList products={product.Category!.products} />
+      </div>
     </div>
   );
 };
